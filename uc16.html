@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe Finder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="uc16.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Recipe Finder</h2>
+      <br/>
+      <p>Try entering a recipe like <b>Chicken pesto</b> </p>
+      <div>
+        <div id="recipebox" class="control-group">
+          <label for="recipe">Recipe</label>
+          <input type="text" name="recipe" id="recipe" placeholder="Type the recipe you want here" />
+        </div>
+      </div>
+      <br />
+      <div>
+        <button class='btn btn-success btn-large' onclick="findRecipe('recipe')">Find a Recipe</button>
+      </div>
+      <br />
+      <div>
+        <div id="place" class=""></div>
+      </div>
+    </div>
+  </body>
+</html>
