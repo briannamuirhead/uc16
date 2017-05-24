@@ -12,7 +12,7 @@ function findRecipe(recipeId) {
             // We got a response from the server!
             if(this.status === 200) {
                 // The request was successful!
-                displayRecipe(this.responseText);
+                displayFood(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
                 displayFood('{ "meal" : "none" }');
@@ -24,7 +24,7 @@ function findRecipe(recipeId) {
         }
     };
     // Notice how the URL is appended with the zip code
-    var url = "https://api.edamam.com/search" + recipe;
+    var url = "https://api.edamam.com/search?q=" + recipe + "&app_id=$db2068d1&app_key=$127783986707bb581c4c809d8acd189a"
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
