@@ -33,17 +33,17 @@ function findRecipe(recipeId) {
  * Displays the zip code place given the JSON data
  * @param {string} data JSON data representing place for given zip code
  */
-function displayPlace(data){
-    var place = JSON.parse(data);
-    if(place.country === "none") {
-        document.getElementById("place").className = "alert alert-warning";
-        document.getElementById("place").innerHTML = "No place matches that zip code."
+function displayFood(data){
+    var food = JSON.parse(data);
+    if(food.meal === "none") {
+        document.getElementById("food").className = "alert alert-warning";
+        document.getElementById("food").innerHTML = "No place matches that zip code."
     } else {
-        document.getElementById("place").className = "alert alert-success";
-        document.getElementById("place").innerHTML = place.places[0]["place name"] +
+        document.getElementById("food").className = "alert alert-success";
+        document.getElementById("food").innerHTML = food.places[0]["food name"] +
         ", " +
-        place.places[0].state +
+        food.places[0].state +
         ", " +
-        place.country;
+        food.meal;
     }
 }
