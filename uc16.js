@@ -12,10 +12,10 @@ function findRecipe(recipeId) {
             // We got a response from the server!
             if(this.status === 200) {
                 // The request was successful!
-                displayPlace(this.responseText);
+                displayRecipe(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
-                displayRecipe('{ "country" : "none" }');
+                displayRecipe('{ "meal" : "none" }');
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
             }
@@ -33,9 +33,9 @@ function findRecipe(recipeId) {
  * Displays the zip code place given the JSON data
  * @param {string} data JSON data representing place for given zip code
  */
-function displayPlace(data){
-    var place = JSON.parse(data);
-    if(place.country === "none") {
+function displayFood(data){
+    var food = JSON.parse(data);
+    if(place.meal === "none") {
         document.getElementById("place").className = "alert alert-warning";
         document.getElementById("place").innerHTML = "No place matches that zip code."
     } else {
