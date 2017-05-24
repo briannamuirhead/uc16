@@ -24,7 +24,7 @@ function findRecipe(recipeId) {
         }
     };
     // Notice how the URL is appended with the zip code
-    var url = "https://api.edamam.com/search" + recipe;
+    var url = "http://food2fork.com/api/get" + recipe;
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
