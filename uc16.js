@@ -15,7 +15,7 @@ function findRecipe(recipeId) {
                 displayRecipe(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
-                displayRecipe('{ "meal" : "none" }');
+                displayFood('{ "meal" : "none" }');
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
             }
@@ -35,15 +35,15 @@ function findRecipe(recipeId) {
  */
 function displayFood(data){
     var food = JSON.parse(data);
-    if(place.meal === "none") {
-        document.getElementById("place").className = "alert alert-warning";
-        document.getElementById("place").innerHTML = "No place matches that zip code."
+    if(food.meal === "none") {
+        document.getElementById("food").className = "alert alert-warning";
+        document.getElementById("food").innerHTML = "No place matches that zip code."
     } else {
-        document.getElementById("place").className = "alert alert-success";
-        document.getElementById("place").innerHTML = place.places[0]["place name"] +
+        document.getElementById("food").className = "alert alert-success";
+        document.getElementById("food").innerHTML = food.foods[0]["food name"] +
         ", " +
-        place.places[0].state +
+        food.foods[0].state +
         ", " +
-        place.country;
+        food.meal;
     }
 }
