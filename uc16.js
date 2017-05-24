@@ -24,7 +24,7 @@ function findRecipe(recipeId) {
         }
     };
     // Notice how the URL is appended with the zip code
-    var url = "http://api.zippopotam.us/us/" + recipe;
+    var url = "https://api.edamam.com/search" + recipe;
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
