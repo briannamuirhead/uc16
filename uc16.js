@@ -24,7 +24,7 @@ function findRecipe(recipeId) {
         }
     };
     // Notice how the URL is appended with the zip code
-    var url = "https://api.edamam.com/search?q=" + recipe + "&app_id=$db2068d1&app_key=$127783986707bb581c4c809d8acd189a"
+    var url = "http://food2fork.com/api/search?key=92abd6fd8fad96cfd6c7466da0c83b2d&q=" + recipe
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
@@ -35,15 +35,11 @@ function findRecipe(recipeId) {
  */
 function displayFood(data){
     var food = JSON.parse(data);
-    if(food.meal === "none") {
+    if(food.count === 0) {
         document.getElementById("food").className = "alert alert-warning";
         document.getElementById("food").innerHTML = "No place matches that zip code."
     } else {
         document.getElementById("food").className = "alert alert-success";
-        document.getElementById("food").innerHTML = food.foods[0]["food name"] +
-        ", " +
-        food.foods[0].state +
-        ", " +
-        food.meal;
+        document.getElementById("food").innerHTML = food.recipes[0]["title"];
     }
 }
