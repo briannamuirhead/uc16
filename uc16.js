@@ -12,7 +12,7 @@ function findRecipe(recipeId) {
             // We got a response from the server!
             if(this.status === 200) {
                 // The request was successful!
-                displayRecipe(this.responseText);
+                displayFood(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
                 displayFood('{ "meal" : "none" }');
@@ -24,7 +24,7 @@ function findRecipe(recipeId) {
         }
     };
     // Notice how the URL is appended with the zip code
-    var url = "http://food2fork.com/api/get" + recipe;
+    var url = "http://food2fork.com/api/search?t=en/json/92abd6fd8fad96cfd6c7466da0c83b2d/" + recipe
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
