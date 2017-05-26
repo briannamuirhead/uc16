@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Recipe Finder</title>
+    <title>Current Weather</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,18 +11,18 @@
   </head>
   <body>
     <div class="container">
-      <h2>Recipe Finder</h2>
+      <h2>Current Weather</h2>
       <br/>
-      <p>Try entering a recipe like <b>Chicken pesto</b> </p>
+      <p>Try entering the name of a city like <b>Honolulu</b>. </p>
       <div>
         <div id="citybox" class="control-group">
-          <label for="city">Recipe</label>
-          <input type="text" name="city" id="city" placeholder="Type the name of the city." />
+          <label for="city">City</label>
+          <input type="text" name="city" id="city" placeholder="Enter city here." />
         </div>
       </div>
       <br />
       <div>
-        <button class='btn btn-success btn-large' onclick="findWeather('city')">Find a Recipe</button>
+        <button class='btn btn-success btn-large' onclick="findWeather('city')">Find the weather</button>
       </div>
       <br />
       <div>
