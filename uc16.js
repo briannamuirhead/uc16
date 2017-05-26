@@ -15,7 +15,7 @@ function findWeather(cityId) {
                 displayWeather(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
-                displayWeather(this.responseText);
+                displayWeather('{}');
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
             }
