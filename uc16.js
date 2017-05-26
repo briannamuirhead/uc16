@@ -2,9 +2,9 @@
  * Uses AJAX to query an internet data source for zip codes
  * @param {string} zipId The element id that has the zip code
  */
-function findRecipe(recipeId) {
+function findWeather(cityId) {
     // First get the zip code from the HTML textbox
-    var recipe = document.getElementById(recipeId).value;
+    var city = document.getElementById(cityId).value;
     // Now make a HTTP request
     var httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = function () {
@@ -12,10 +12,10 @@ function findRecipe(recipeId) {
             // We got a response from the server!
             if(this.status === 200) {
                 // The request was successful!
-                displayFood(this.responseText);
+                displayWeather(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
-                displayFood('{ "meal" : "none" }');
+                displayWeather(this.responseText);
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
             }
@@ -24,7 +24,7 @@ function findRecipe(recipeId) {
         }
     };
     // Notice how the URL is appended with the zip code
-    var url = "http://food2fork.com/api/search?t=en/json/92abd6fd8fad96cfd6c7466da0c83b2d/" + recipe
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=b2d53dfcbf6b2b74b1a81b060d9938ec"
     httpRequest.open("GET", url, true);
     httpRequest.send();
 }
@@ -33,17 +33,14 @@ function findRecipe(recipeId) {
  * Displays the zip code place given the JSON data
  * @param {string} data JSON data representing place for given zip code
  */
-function displayFood(data){
-    var food = JSON.parse(data);
-    if(food.meal === "none") {
-        document.getElementById("food").className = "alert alert-warning";
-        document.getElementById("food").innerHTML = "No place matches that zip code."
+function displayWeather(data){
+    var weather = JSON.parse(data);
+    var fahrenheit = weather.main.temp * (9/5) - 459.67;
+    if(weather.message === "city not found") {
+        document.getElementById("weather").className = "alert alert-warning";
+        document.getElementById("weather").innerHTML = "No place matches that zip code."
     } else {
-        document.getElementById("food").className = "alert alert-success";
-        document.getElementById("food").innerHTML = food.foods[0]["food name"] +
-        ", " +
-        food.foods[0].state +
-        ", " +
-        food.meal;
+        document.getElementById("weather").className = "alert alert-success";
+        document.getElementById("weather").innerHTML = Math.round(fahrenheit) + " degrees";
     }
 }
