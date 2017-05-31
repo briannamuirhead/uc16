@@ -1,9 +1,9 @@
 /**
- * Uses AJAX to query an internet data source for zip codes
- * @param {string} zipId The element id that has the zip code
+ * Uses AJAX to query an internet data source for the weather
+ * @param {string} cityId The element id that has the name of the city for which we are looking for the weather.
  */
 function findWeather(cityId) {
-    // First get the zip code from the HTML textbox
+    // First get the city's name code from the HTML textbox
     var city = document.getElementById(cityId).value;
     // Now make a HTTP request
     var httpRequest = new XMLHttpRequest();
@@ -15,6 +15,7 @@ function findWeather(cityId) {
                 displayWeather(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
+                  displayPlace('{ "country" : "none" }');
                 displayWeather(this.responseText);
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
