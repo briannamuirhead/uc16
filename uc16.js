@@ -15,7 +15,7 @@ function findWeather(cityId) {
                 displayWeather(this.responseText);
             } else if (this.status === 404){
                 // No postal code found
-                displayWeather('{}');
+                displayWeather('{ "city" : "none" }');
             } else {
                 console.log("We have a problem...server responded with code: " + this.status);
             }
@@ -35,12 +35,12 @@ function findWeather(cityId) {
  */
 function displayWeather(data){
     var weather = JSON.parse(data);
-    var fahrenheit = weather.main.temp * (9/5) - 459.67;
-    if(weather.message === "city not found") {
+    if(weather.city === "none") {
         document.getElementById("weather").className = "alert alert-warning";
-        document.getElementById("weather").innerHTML = "No place matches that zip code."
+        document.getElementById("weather").innerHTML = "There is no city found with that name."
     } else {
+        var fahrenheit = weather.main.temp * (9/5) - 459.67;
         document.getElementById("weather").className = "alert alert-success";
-        document.getElementById("weather").innerHTML = Math.round(fahrenheit) + " degrees";
+        document.getElementById("weather").innerHTML = Math.round(fahrenheit) + " degrees, " + weather.weather[0].description;
     }
 }
