@@ -42,6 +42,6 @@ function displayWeather(data){
         var fahrenheit = weather.main.temp * (9/5) - 459.67;
         var celsius = weather.main.temp - 273.15;
         document.getElementById("weather").className = "alert alert-success";
-        document.getElementById("weather").innerHTML = Math.round(fahrenheit) + " degrees fahrenheit, " + Math.round(celsius) + " degrees celsius, " + weather.main.temp + " degrees Kelvin, " + weather.weather[0].description;
+        document.getElementById("weather").innerHTML = Math.round(fahrenheit) + " °F, " + Math.round(celsius) + " °C, " + weather.main.temp + " Kelvin, " + weather.weather[0].description;
     }
 }
